@@ -13,7 +13,7 @@ export default function DashboardAdmin({ rol, cerrarSesion }) {
   useEffect(() => {
     const fetchPagos = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/admin/pagos-pendientes');
+        const res = await axios.get('https://sistemas-de-facturacion-2.onrender.com/admin/pagos-pendientes');
         setPagosPendientes(res.data);
       } catch (err) { console.error(err); }
     };
@@ -24,7 +24,7 @@ export default function DashboardAdmin({ rol, cerrarSesion }) {
 
   useEffect(() => {
     if (codigoBusqueda.length > 1) {
-      axios.get(`http://localhost:3000/admin/buscar-cliente/${codigoBusqueda}`)
+      axios.get(`https://sistemas-de-facturacion-2.onrender.com/admin/buscar-cliente/${codigoBusqueda}`)
         .then(res => setUsuariosEncontrados(res.data));
     } else { setUsuariosEncontrados([]); }
   }, [codigoBusqueda]);
@@ -37,7 +37,7 @@ export default function DashboardAdmin({ rol, cerrarSesion }) {
 
   const handleEmitirFactura = async () => {
     try {
-      await axios.post('http://localhost:3000/admin/generar-factura', {
+      await axios.post('https://sistemas-de-facturacion-2.onrender.com/admin/generar-factura', {
         usuario_id: usuarioSeleccionado.id, subtotal, nota_debito: notaDebito, total
       });
       alert("Factura emitida correctamente.");
@@ -50,7 +50,7 @@ export default function DashboardAdmin({ rol, cerrarSesion }) {
 
   const handleConfirmarPago = async (factura_id) => {
     try {
-      await axios.post(`http://localhost:3000/admin/confirmar-pago/${factura_id}`);
+      await axios.post(`https://sistemas-de-facturacion-2.onrender.com/admin/confirmar-pago/${factura_id}`);
       setPagosPendientes(pagosPendientes.filter(p => p.factura_id !== factura_id));
       alert("Pago confirmado correctamente.");
     } catch (err) {

@@ -38,7 +38,7 @@ export default function OnboardingUsuario({ finalizarOnboarding, usuarioId }) {
   const guardarEnBaseDeDatos = async () => {
     try {
       // Ajustado para coincidir con la estructura del servidor (datos_onboarding)
-      await axios.post('http://localhost:3000/usuarios/completar-onboarding', {
+      await axios.post('https://sistemas-de-facturacion-2.onrender.com/usuarios/completar-onboarding', {
         usuario_id: usuarioId,
         datos_onboarding: {
             avatar_path: fotoSeleccionada,

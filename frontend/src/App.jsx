@@ -24,7 +24,7 @@ function App() {
     }
 
     try {
-      const res = await axios.get(`http://localhost:3000/usuarios/${id}`);
+      const res = await axios.get(`https://sistemas-de-facturacion-2.onrender.com/usuarios/${id}`);
       
       // Asignamos el ID original al objeto que viene de BD para mantener consistencia
       setDatosUsuario({ ...res.data, id: id }); 

@@ -34,7 +34,7 @@ export default function RegistroUsuario({ irALogin, irAOnboarding }) {
     if (!esClaveSegura) return;
     setEnviando(true);
     try {
-      await axios.post('http://localhost:3000/auth/enviar-codigo-registro', {
+      await axios.post('https://sistemas-de-facturacion-2.onrender.com/auth/enviar-codigo-registro', {
         email: correo,
         nombre
       });
@@ -54,13 +54,13 @@ export default function RegistroUsuario({ irALogin, irAOnboarding }) {
     e.preventDefault();
     setEnviando(true);
     try {
-      await axios.post('http://localhost:3000/auth/verificar-codigo', {
+      await axios.post('https://sistemas-de-facturacion-2.onrender.com/auth/verificar-codigo', {
         email: datosTemp.correo,
         codigo: codigoIngresado.trim()
       });
 
       // Código correcto → crear la cuenta
-      const res = await axios.post('http://localhost:3000/usuarios', {
+      const res = await axios.post('https://sistemas-de-facturacion-2.onrender.com/usuarios', {
         nombre: datosTemp.nombre,
         email: datosTemp.correo,
         password: datosTemp.clave,
@@ -85,7 +85,7 @@ export default function RegistroUsuario({ irALogin, irAOnboarding }) {
 
   const reenviarCodigo = async () => {
     try {
-      await axios.post('http://localhost:3000/auth/enviar-codigo-registro', {
+      await axios.post('https://sistemas-de-facturacion-2.onrender.com/auth/enviar-codigo-registro', {
         email: datosTemp.correo,
         nombre: datosTemp.nombre
       });

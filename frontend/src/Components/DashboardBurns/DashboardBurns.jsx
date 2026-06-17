@@ -21,8 +21,8 @@ export default function DashboardBurns({ cerrarSesion }) {
   const cargarDatos = async () => {
     try {
       const [resDashboard, resClientes] = await Promise.all([
-        axios.get('http://localhost:3000/admin/dashboard'),
-        axios.get('http://localhost:3000/admin/clientes')
+        axios.get('https://sistemas-de-facturacion-2.onrender.com/admin/dashboard'),
+        axios.get('https://sistemas-de-facturacion-2.onrender.com/admin/clientes')
       ]);
       setResumen(resDashboard.data);
       setClientes(resClientes.data);

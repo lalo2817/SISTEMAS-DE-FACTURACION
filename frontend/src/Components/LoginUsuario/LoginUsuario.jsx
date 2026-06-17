@@ -22,7 +22,7 @@ export default function LoginUsuario({ irARegistro, irAAdmin, alLoguear }) {
     const emailLimpiado = correo.trim();
     const claveLimpiada = clave.trim();
     try {
-      const res = await axios.post('http://localhost:3000/login', {
+      const res = await axios.post('https://sistemas-de-facturacion-2.onrender.com', {
         email: emailLimpiado,
         password: claveLimpiada
       });
@@ -49,7 +49,7 @@ export default function LoginUsuario({ irARegistro, irAAdmin, alLoguear }) {
     e.preventDefault();
     setEnviando(true);
     try {
-      await axios.post('http://localhost:3000/auth/recuperar-password', { email: emailRecuperar });
+      await axios.post('https://sistemas-de-facturacion-2.onrender.com/auth/recuperar-password', { email: emailRecuperar });
       setPaso('recuperar_codigo');
     } catch (err) {
       alert(err.response?.data?.error || 'Error al enviar el código.');
@@ -62,7 +62,7 @@ export default function LoginUsuario({ irARegistro, irAAdmin, alLoguear }) {
     setEnviando(true);
     try {
       // Solo validamos que el código sea correcto avanzando al siguiente paso
-      await axios.post('http://localhost:3000/auth/cambiar-password', {
+      await axios.post('https://sistemas-de-facturacion-2.onrender.com/auth/cambiar-password', {
         email: emailRecuperar,
         codigo: codigoRecuperar.trim(),
         nueva_password: '___TEMP___' // dummy para verificar el código
@@ -75,7 +75,7 @@ export default function LoginUsuario({ irARegistro, irAAdmin, alLoguear }) {
     }
     // Verificación real con endpoint de registro pero tipo recuperacion
     try {
-      const res = await axios.post('http://localhost:3000/auth/verificar-codigo-recuperacion', {
+      const res = await axios.post('https://sistemas-de-facturacion-2.onrender.com/auth/verificar-codigo-recuperacion', {
         email: emailRecuperar,
         codigo: codigoRecuperar.trim()
       });
@@ -90,7 +90,7 @@ export default function LoginUsuario({ irARegistro, irAAdmin, alLoguear }) {
     e.preventDefault();
     setEnviando(true);
     try {
-      await axios.post('http://localhost:3000/auth/cambiar-password', {
+      await axios.post('https://sistemas-de-facturacion-2.onrender.com/auth/cambiar-password', {
         email: emailRecuperar,
         codigo: codigoRecuperar.trim(),
         nueva_password: nuevaClave
@@ -182,7 +182,7 @@ export default function LoginUsuario({ irARegistro, irAAdmin, alLoguear }) {
                 e.preventDefault();
                 setEnviando(true);
                 try {
-                  const res = await axios.post('http://localhost:3000/auth/verificar-codigo-recuperacion', {
+                  const res = await axios.post('https://sistemas-de-facturacion-2.onrender.com/auth/verificar-codigo-recuperacion', {
                     email: emailRecuperar,
                     codigo: codigoRecuperar.trim()
                   });

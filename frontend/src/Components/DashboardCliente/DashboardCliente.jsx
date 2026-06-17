@@ -19,7 +19,7 @@ export default function DashboardCliente({ usuario, irALogin }) {
     const fetchPerfil = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`http://localhost:3000/usuarios/${usuario.id}`);
+        const res = await axios.get(`https://sistemas-de-facturacion-2.onrender.com/usuarios/${usuario.id}`);
         setDatosPerfil(res.data);
       } catch (err) {
         console.error("Error al cargar datos:", err);
@@ -33,12 +33,12 @@ export default function DashboardCliente({ usuario, irALogin }) {
 
     const fetchEstado = async () => {
       try {
-        const resNotif = await axios.get(`http://localhost:3000/notificaciones/${usuario.id}`);
+        const resNotif = await axios.get(`https://sistemas-de-facturacion-2.onrender.com/notificaciones/${usuario.id}`);
         setNotificaciones(resNotif.data);
       } catch (err) { /* sin notificaciones aún */ }
 
       try {
-        const resFactura = await axios.get(`http://localhost:3000/facturas/ultima/${usuario.id}`);
+        const resFactura = await axios.get(`https://sistemas-de-facturacion-2.onrender.com/facturas/ultima/${usuario.id}`);
         setFactura(resFactura.data);
       } catch (err) {
         setFactura(null);
@@ -55,7 +55,7 @@ export default function DashboardCliente({ usuario, irALogin }) {
   const marcarLeidas = async () => {
     if (noLeidas === 0) return;
     try {
-      await axios.post(`http://localhost:3000/notificaciones/marcar-leidas/${usuario.id}`);
+      await axios.post(`https://sistemas-de-facturacion-2.onrender.com/notificaciones/marcar-leidas/${usuario.id}`);
       setNotificaciones(notificaciones.map(n => ({ ...n, leido: true })));
     } catch (err) { console.error(err); }
   };
@@ -75,7 +75,7 @@ export default function DashboardCliente({ usuario, irALogin }) {
   const manejarGenerarFactura = async () => {
     setGenerandoFactura(true);
     try {
-      const res = await axios.post('http://localhost:3000/facturas/generar-cliente', {
+      const res = await axios.post('https://sistemas-de-facturacion-2.onrender.com/facturas/generar-cliente', {
         usuario_id: usuario.id,
         consumo
       });
@@ -99,7 +99,7 @@ export default function DashboardCliente({ usuario, irALogin }) {
 
     setEnviandoPago(true);
     try {
-      await axios.post('http://localhost:3000/pagar', {
+      await axios.post('https://sistemas-de-facturacion-2.onrender.com/pagar', {
         usuario_id: usuario.id,
         factura_id: factura.id,
         monto: factura.total
