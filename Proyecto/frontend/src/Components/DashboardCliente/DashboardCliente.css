@@ -1,0 +1,154 @@
+/* --- RESET Y ESTRUCTURA BASE --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  background-color: #0a0a0a;
+  color: #00ffcc;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+/* --- HEADER --- */
+.dash-header {
+  background: #000;
+  padding: 15px;
+  border-bottom: 2px solid #00ffcc;
+  text-align: center;
+  flex-shrink: 0; /* No se comprime */
+}
+
+.dash-header h1 { font-size: 1.2rem; letter-spacing: 2px; }
+.contract-tag { font-size: 0.75rem; color: #888; margin-top: 4px; }
+
+/* --- CONTENIDO CON SCROLL --- */
+.dash-content {
+  flex: 1; /* Ocupa el espacio restante */
+  overflow-y: auto; /* ESTO HABILITA EL SCROLL */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.section-card {
+  background: #151515;
+  border: 1px solid #333;
+  padding: 20px;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 10px;
+  margin-bottom: 20px; /* Espacio para que el último elemento no se corte */
+}
+
+/* --- PERFIL / AVATAR --- */
+.avatar-huge-container { display: flex; justify-content: center; margin-bottom: 15px; }
+.avatar-huge { 
+  width: 140px; height: 140px; border-radius: 50%; 
+  border: 4px solid #00ffcc; object-fit: cover; 
+}
+.operator-name { text-align: center; margin-bottom: 15px; }
+.profile-details p { display: flex; justify-content: space-between; margin: 8px 0; }
+
+/* --- CONSUMO Y FACTURACIÓN --- */
+.consumo-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.item-input { display: flex; justify-content: space-between; align-items: center; }
+.item-input input { 
+  width: 70px; background: #000; border: 1px solid #00ffcc; 
+  color: #fff; text-align: center; padding: 4px; 
+}
+
+.invoice-receipt { border-top: 1px solid #444; padding-top: 10px; }
+.line { display: flex; justify-content: space-between; margin-bottom: 5px; }
+.debit-alert { color: #ff4444; font-weight: bold; }
+.grand-total { font-size: 1.1rem; font-weight: bold; color: #fff; margin-top: 10px; border-top: 1px solid #fff; }
+
+/* --- NAVEGACIÓN FIJA --- */
+.dash-nav-bar {
+  flex-shrink: 0; /* No se comprime */
+  background: #000;
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0;
+  border-top: 2px solid #00ffcc;
+  z-index: 1000;
+}
+
+.dash-nav-bar button {
+  background: none;
+  border: none;
+  color: #777;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.dash-nav-bar button:active, .dash-nav-bar button:focus {
+  color: #00ffcc;
+}
+
+/* --- ELEMENTOS EXTRA --- */
+.btn-shutdown, .btn-confirm-payment, .btn-download {
+  background: #00ffcc; color: #000; border: none; padding: 10px; width: 100%; margin-top: 15px; font-weight: bold;
+}
+.btn-shutdown { background: #8b0000; color: #fff; }
+.btn-download { background: #ffcc00; color: #000; cursor: pointer; }
+.btn-download:hover { background: #ffd633; }
+
+.notif-card { background: #222; padding: 12px; margin-bottom: 8px; border-left: 4px solid #00ffcc; }
+.notif-card.no-leido { border-left: 4px solid #ffcc00; background: #2a2a10; }
+
+.btn-download-notif {
+  margin-top: 8px;
+  background: #ffcc00;
+  color: #000;
+  border: none;
+  padding: 8px 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.btn-download-notif:hover { background: #ffd633; }
+
+.precio-unitario {
+  color: #888;
+  font-size: 0.75rem;
+  font-weight: normal;
+}
+
+.status-confirmado {
+  color: #00ffcc;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 12px;
+  border: 1px solid #00ffcc;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+/* --- BADGE DE NOTIFICACIONES NO LEÍDAS --- */
+.nav-btn-notif { position: relative; }
+.badge-notif {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #ff4444;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,360 @@
+/* ==========================================================================
+   RESET Y CONFIGURACIÓN GENERAL
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    background-color: #0a0b10;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   FONDO DIVIDIDO (SPLIT BACKGROUND)
+   ========================================================================== */
+.split-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: -2;
+}
+
+.bg-purple {
+    width: 50%;
+    background: linear-gradient(135deg, #2d124d 0%, #130626 100%);
+    position: relative;
+}
+
+.bg-purple::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 30% 30%, rgba(157, 78, 221, 0.2) 0%, transparent 70%);
+}
+
+.bg-white {
+    width: 50%;
+    background: linear-gradient(135deg, #0f111a 0%, #05070c 100%);
+    position: relative;
+}
+
+.bg-white::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 70% 70%, rgba(0, 245, 212, 0.05) 0%, transparent 70%);
+}
+
+/* ==========================================================================
+   LAYOUT Y ESTRUCTURA PRINCIPAL
+   ========================================================================== */
+.layout-login {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+/* ==========================================================================
+   BARRA SUPERIOR (BOTÓN ADMINISTRACIÓN)
+   ========================================================================== */
+.barra-superior {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 10;
+}
+
+.btn-admin-tab {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #00f5d4;
+    border: 1px solid rgba(0, 245, 212, 0.3);
+    padding: 10px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 20px rgba(0, 245, 212, 0.1);
+}
+
+.btn-admin-tab:hover {
+    background: #00f5d4;
+    color: #0a0b10;
+    border-color: #00f5d4;
+    box-shadow: 0 0 20px rgba(0, 245, 212, 0.5);
+    transform: translateY(-2px);
+}
+
+.icon-admin {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
+}
+
+.btn-admin-tab:hover .icon-admin {
+    transform: scale(1.1);
+    filter: brightness(0);
+}
+
+/* ==========================================================================
+   TARJETA CONTENEDORA (CARD WRAPPER & BACKGROUND)
+   ========================================================================== */
+.card-login-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 880px;
+    aspect-ratio: 16 / 10.5; 
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: transparent;
+}
+
+.bg-pantalla {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; 
+    filter: brightness(0.8) contrast(1.05);
+    display: block;
+}
+
+/* ==========================================================================
+   TARJETA FORMULARIO (GLASSMORPHISM)
+   ========================================================================== */
+.card-login {
+    position: relative;
+    z-index: 2; 
+    background: rgba(10, 11, 16, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    width: 80%;
+    max-width: 500px;
+    padding: 40px;
+    border-radius: 24px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.card-login h1 {
+    font-size: 1.4rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #ffffff, #a5abc2);
+    -webkit-background-clip: text; 
+    background-clip: text;        
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   CAMPOS DE ENTRADA (INPUTS)
+   ========================================================================== */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    height: 56px;
+    transition: all 0.3s ease;
+}
+
+.input-wrapper:focus-within {
+    border-color: #00f5d4;
+    background: rgba(0, 245, 212, 0.02);
+    box-shadow: 0 0 15px rgba(0, 245, 212, 0.15);
+    transform: translateY(-1px);
+}
+
+.icon-container {
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    height: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.3s;
+}
+
+.input-wrapper:focus-within .icon-container {
+    border-right-color: #00f5d4;
+}
+
+.icon-container img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.input-wrapper:focus-within .icon-container img {
+    opacity: 1;
+    transform: scale(1.05);
+    filter: brightness(0) saturate(100%) invert(77%) sepia(85%) saturate(1512%) hue-rotate(124deg) brightness(101%) contrast(105%);
+}
+
+.input-wrapper input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* Modificación para compensar el espacio del ojo a la derecha y mantener centrado real */
+.input-password-container input {
+    padding-left: 54px; 
+    padding-right: 10px;
+}
+
+.input-wrapper input::placeholder {
+    color: #74798c;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   NUEVO: BOTÓN DEL OJO INTERACTIVO
+   ========================================================================== */
+.input-password-container {
+    padding-right: 8px;
+}
+
+.btn-toggle-eye {
+    background: transparent;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    height: 100%;
+    width: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.btn-toggle-eye:hover {
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+/* ==========================================================================
+   BOTÓN DE ACCESO
+   ========================================================================== */
+.btn-submit-epic {
+    width: 100%;
+    height: 55px;
+    background: linear-gradient(90deg, #00f5d4 0%, #00bbf9 100%);
+    color: #0a0b10;
+    border: none;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    box-shadow: 0 0 20px rgba(0, 245, 212, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-transform: uppercase;
+}
+
+.btn-submit-epic:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(0, 245, 212, 0.8), 0 0 10px rgba(0, 187, 249, 0.4);
+    letter-spacing: 3px;
+}
+
+/* ==========================================================================
+   ENLACES DE ACCIÓN
+   ========================================================================== */
+.action-links {
+    margin-top: 20px;
+}
+
+.action-links a {
+    color: #9d4ede; 
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.action-links a:hover {
+    color: #00f5d4; 
+    text-shadow: 0 0 10px rgba(0, 245, 212, 0.4);
+    transform: scale(1.03);
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVE)
+   ========================================================================== */
+@media (max-width: 900px) {
+    .card-login-wrapper {
+        aspect-ratio: auto; 
+        min-height: 550px;
+        border-radius: 20px;
+    }
+    .card-login {
+        width: 88%;
+        padding: 35px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .split-background {
+        flex-direction: column;
+    }
+    .bg-purple { width: 100%; height: 38%; }
+    .bg-white { width: 100%; height: 62%; }
+    .card-login-wrapper { margin-top: 50px; min-height: 500px; }
+    .card-login { width: 94%; padding: 30px 16px; }
+    .input-password-container input { padding-left: 36px; } /* Ajuste responsive pro ojo */
+}
